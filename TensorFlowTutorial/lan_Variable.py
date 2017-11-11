@@ -26,6 +26,6 @@ with tf.Session() as sess:
   # Do some work with the model.
   
   # Save the variables to disk.
-  save_path = saver.save(sess, "D:/Projects/Github/Python/TensorFlowTutorial/tmp/model.ckpt")
+  save_path = saver.save(sess, "./tmp/model.ckpt")
   #save_path = saver.save(sess, dir_path+"/tmp1/model.ckpt")
   print ("Model saved in file: ", save_path)

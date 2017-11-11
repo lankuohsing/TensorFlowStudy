@@ -1,2 +1,2 @@
-model_checkpoint_path: "D:\\Projects\\Github\\Python\\TensorFlowTutorial/tmp/model.ckpt"
-all_model_checkpoint_paths: "D:\\Projects\\Github\\Python\\TensorFlowTutorial/tmp/model.ckpt"
+model_checkpoint_path: "D:\\Github\\TensorFlowStudy\\TensorFlowTutorial/tmp/model.ckpt"
+all_model_checkpoint_paths: "D:\\Github\\TensorFlowStudy\\TensorFlowTutorial/tmp/model.ckpt"
