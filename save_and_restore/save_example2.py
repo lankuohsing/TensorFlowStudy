@@ -26,5 +26,5 @@ with tf.Session(graph=graph) as sess:
     sess.run(init_op)
     for i in range(1,10000):
         y_result = sess.run(update_y,feed_dict={x:i})
-        if i %4000 == 0:
-            saver.save(sess,checkpoint_dir,global_step=i)    
+        if i %400 == 0:
+            saver.save(sess,checkpoint_dir,global_step=i)
