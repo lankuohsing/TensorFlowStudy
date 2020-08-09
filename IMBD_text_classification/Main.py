@@ -7,7 +7,7 @@ Created on Sat Jun  6 23:24:33 2020
 
 import load_data
 import explore_data
-
+import vectorize_data
 # In[]
 ((train_texts, train_labels),(test_texts,test_labels))=load_data.load_imdb_sentiment_analysis_dataset("./dataset")
 
@@ -36,3 +36,6 @@ flowchart below):
 """
 # In[]
 S_W=len(train_texts)/midian_words_per_sample
+
+# In[]
+x_train, x_val=vectorize_data.ngram_vectorize(train_texts, train_labels, test_texts)

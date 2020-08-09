@@ -49,7 +49,6 @@ def get_num_words_per_sample(sample_texts):
         int, median number of words per sample.
     """
     num_words = [len(s.split()) for s in sample_texts]
-    print("hello")
     return np.median(num_words)
 
 
