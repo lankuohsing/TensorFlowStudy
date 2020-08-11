@@ -1,4 +1,8 @@
 # -*- coding: utf-8 -*-
+from __future__ import absolute_import
+from __future__ import division
+from __future__ import print_function
+
 """
 Created on Sun Aug  9 23:52:20 2020
 
@@ -11,9 +15,7 @@ training a n-gram model - a simple multi-layer perceptron model. We use n-gram
 model for text classification when the ratio of number of samples to number of
 words per sample for the given dataset is very small (<~1500).
 """
-from __future__ import absolute_import
-from __future__ import division
-from __future__ import print_function
+
 
 import argparse
 import time
@@ -65,6 +67,7 @@ def train_ngram_model(data,
     # Vectorize texts.
     x_train, x_val = vectorize_data.ngram_vectorize(
         train_texts, train_labels, val_texts)
+#    print(x_train)
 
     # Create model instance.
     model = build_model.mlp_model(layers=layers,
@@ -85,14 +88,15 @@ def train_ngram_model(data,
     # not decrease in two consecutive tries, stop training.
     callbacks = [tf.keras.callbacks.EarlyStopping(
         monitor='val_loss', patience=2)]
-
+    x_train_dense=x_train.todense()
+    x_val_dense=x_val.todense()
     # Train and validate model.
     history = model.fit(
-            x_train,
+            x_train_dense,
             train_labels,
             epochs=epochs,
             callbacks=callbacks,
-            validation_data=(x_val, val_labels),
+            validation_data=(x_val_dense, val_labels),
             verbose=2,  # Logs once per epoch.
             batch_size=batch_size)
 
@@ -108,7 +112,7 @@ def train_ngram_model(data,
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument('--data_dir', type=str, default='./data',
+    parser.add_argument('--data_dir', type=str, default='./dataset/',
                         help='input data directory')
     FLAGS, unparsed = parser.parse_known_args()
 
