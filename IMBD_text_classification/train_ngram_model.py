@@ -106,7 +106,7 @@ def train_ngram_model(data,
             acc=history['val_acc'][-1], loss=history['val_loss'][-1]))
 
     # Save model.
-    model.save('imdb_mlp_model.h5')
+    model.save('models/imdb_mlp_model.h5')
     return history['val_acc'][-1], history['val_loss'][-1]
 
 
