@@ -44,7 +44,7 @@ test_X, test_y = generate_data(np.sin(sin_input_test))
 def lstm_model(X, y, is_training):
     # 使用多层的LSTM结构。
     cell = tf.nn.rnn_cell.MultiRNNCell([
-        tf.nn.rnn_cell.BasicLSTMCell(HIDDEN_SIZE)
+        tf.nn.rnn_cell.BasicRNNCell(HIDDEN_SIZE)#BasicLSTMCell效果更好
         for _ in range(NUM_LAYERS)])
 
     # 使用TensorFlow接口将多层的LSTM结构连接成RNN网络并计算其前向传播结果。
@@ -54,7 +54,7 @@ def lstm_model(X, y, is_training):
     # 对LSTM网络的输出再做加一层全链接层并计算损失。注意这里默认的损失为平均
     # 平方差损失函数。
     predictions = tf.contrib.layers.fully_connected(
-        output, 1, activation_fn=None)
+        output, 1, activation_fn=None)#也即没有激活函数
 
     # 只在训练时计算损失函数和优化步骤。测试时直接返回预测结果。
     if not is_training:
